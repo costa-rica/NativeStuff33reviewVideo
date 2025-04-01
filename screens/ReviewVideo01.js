@@ -14,7 +14,6 @@ import {
   updateReviewReducerPlaybackMethod,
   updateReviewReducerActionsArrayIsPlaying,
   pressedActionInReviewReducerActionArray,
-  updateReviewReducerActionsArrayIsPlayingForPlayAllActionsMethod,
   updatePlaybackMethodPlayAllActionsSelectionActionObjectOnCurrentTime,
   updatePlaybackMethodPlayAllActionsSelectionActionObjectOnNextIndex,
 } from "../reducers/review";
@@ -22,7 +21,7 @@ import ButtonKvImage from "./subcomponents/ButtonKvImage";
 import { Image } from "react-native";
 
 export default function ReviewVideo01({ route, navigation }) {
-  const { videoSource, matchName } = route.params;
+  const { videoSource } = route.params;
   const reviewReducer = useSelector((state) => state.review);
   const dispatch = useDispatch();
   const [currentTimestamp, setCurrentTimestamp] = useState(0);

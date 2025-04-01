@@ -82,28 +82,7 @@ export const reviewSlice = createSlice({
         }
       );
     },
-    // updateReviewReducerActionsArrayIsPlayingOBE - does not keep isPLaying=true 1.5 seconds after: (state, action) => {
-    //   const playerCurrentTime = action.payload;
-    //   let actionFound = false;
 
-    //   state.reviewReducerActionsArray = state.reviewReducerActionsArray.map(
-    //     (action) => {
-    //       if (actionFound || action.timestamp < playerCurrentTime) {
-    //         return { ...action, isPlaying: false };
-    //       }
-
-    //       if (action.timestamp >= playerCurrentTime && !actionFound) {
-    //         const timeDifference = action.timestamp - playerCurrentTime;
-    //         if (timeDifference <= 1.5) {
-    //           actionFound = true;
-    //           return { ...action, isPlaying: true };
-    //         }
-    //       }
-
-    //       return { ...action, isPlaying: false };
-    //     }
-    //   );
-    // },
     pressedActionInReviewReducerActionArray: (state, action) => {
       state.selectedActionObject = action.payload;
       state.playbackMethod = "playOneAction";
@@ -123,31 +102,6 @@ export const reviewSlice = createSlice({
         })
       );
     },
-    // updateReviewReducerActionsArrayIsPlayingForPlayAllActionsMethod: (
-    //   state,
-    //   action
-    // ) => {
-    //   const playerCurrentTime = action.payload;
-    //   let nextActionIndex = null;
-
-    //   // Find the next action whose timestamp is greater than the current time
-    //   for (let i = 0; i < state.reviewReducerActionsArray.length; i++) {
-    //     const action = state.reviewReducerActionsArray[i];
-    //     if (action.timestamp >= playerCurrentTime) {
-    //       nextActionIndex = i;
-    //       break;
-    //     }
-    //   }
-
-    //   if (nextActionIndex !== null) {
-    //     state.reviewReducerActionsArray = state.reviewReducerActionsArray.map(
-    //       (action, index) => ({
-    //         ...action,
-    //         isPlaying: index === nextActionIndex,
-    //       })
-    //     );
-    //   }
-    // },
 
     updatePlaybackMethodPlayAllActionsSelectionActionObjectOnCurrentTime: (
       state,
@@ -168,16 +122,6 @@ export const reviewSlice = createSlice({
       );
     },
 
-    // updatePlaybackMethodPlayAllActionsSelectionActionObjectOnCurrentTime: (
-    //   state,
-    //   action
-    // ) => {
-    //   const currentTime = action.payload;
-    //   state.playbackMethodPlayAllActionsSelectionActionObject =
-    //     state.reviewReducerActionsArray.find(
-    //       (action) => action.timestamp >= currentTime
-    //     );
-    // },
     updatePlaybackMethodPlayAllActionsSelectionActionObjectOnNextIndex: (
       state
     ) => {
@@ -199,18 +143,6 @@ export const reviewSlice = createSlice({
         );
       }
     },
-
-    // updatePlaybackMethodPlayAllActionsSelectionActionObjectOnNextIndex: (
-    //   state
-    // ) => {
-    //   const nextIndex =
-    //     state.playbackMethodPlayAllActionsSelectionActionObject
-    //       .reviewVideoActionsArrayIndex + 1;
-    //   state.playbackMethodPlayAllActionsSelectionActionObject =
-    //     state.reviewReducerActionsArray.find(
-    //       (action) => action.reviewVideoActionsArrayIndex === nextIndex
-    //     );
-    // },
   },
 });
 
@@ -220,8 +152,6 @@ export const {
   updateReviewReducerPlaybackMethod,
   updateReviewReducerActionsArrayIsPlaying,
   pressedActionInReviewReducerActionArray,
-  updateReviewReducerActionsArrayIsPlayingForPlayAllActionsMethod,
-  updatePlaybackMethodPlayAllActionsSelectionActionObject,
   updatePlaybackMethodPlayAllActionsSelectionActionObjectOnCurrentTime,
   updatePlaybackMethodPlayAllActionsSelectionActionObjectOnNextIndex,
 } = reviewSlice.actions;
